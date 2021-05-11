@@ -3,42 +3,51 @@
 from odoo import api, fields, models, _
 from odoo import exceptions
 from odoo.exceptions import UserError
+from datetime import date, datetime, timedelta
 
 class aej_document(models.Model):
     _inherit = 'project.task'
     stage_id = fields.Many2one('project.task.type', 'stageXXX')
+    currentDay = datetime.now().day
+    currentMonth = datetime.now().month 
+    currentYear = datetime.now().year
+
+    #Suchfunktion für Ordnerstruktur 
+    wortliste = [str(currentYear),str(currentMonth)]
+    trennzeichen = ' / '
+    suchordner = str(trennzeichen.join(wortliste))
     
-    
-    #folder_id --> Siehe Jahr (entfällt ggf. )
-        # Monat (entfällt ggf. )
-            #Haftpflichtschadengutachten
-                #Kunde
+    #Unterordner anlegen, wenn neuer Kunden zu einer Aufgabe hinzugefügt wird
+    @api.onchange('partner_id')
+    def _create_customerfolder(self):
+        if self.partner_id:
+            if not self.env['documents.folder'].search([('display_nameXX', 'like', self.partner_id.name)]):
+                self.env['documents.folder'].create({
+                    'name':self.partner_id.name + self.suchordner,
+                    'parent_folder_id': self.env['documents.folder'].search([('display_nameXX', '=', self.suchordner)]).id
+                
+            })
     
     
     @api.onchange('stage_id')
     def _onchangestage(self):
-        self.kanban_state = 'done'
-        #self.message_main_attachment_id.unlink() 
-        #raise UserError("message")
         if self.stage_id.display_name == 'Fertig':
             self.env['documents.document'].create({
                 'name': self.message_main_attachment_id.name,
                 'type': 'binary',
                 'datas': self.message_main_attachment_id.datas,
-                'folder_id':1,
+                'folder_id': self.env['documents.folder'].search([('display_nameXX', 'like', self.partner_id.name + self.suchordner)]).id,
                 'partner_id':self.partner_id.id
         })
-        
+    
+    #Validierungsfehler wenn kein Anhang da ist
     @api.onchange('stage_id')
     def _check_attachment(self):
         if not self.message_main_attachment_id:
-            #raise exceptions.ValidationError(_("Kein Anhang!"))
             message = _('Anhang von %s und Kunde %s fehlt') % (self.name, self.partner_id.name)
             raise UserError(message) 
-      #  if self.stage_id.display_name == 'Fertig':
-      #      message = _('Moving from %s to %s is not allowd') % (self.stage_id.id, self.stage_id.display_name)
-      #      raise UserError(message) 
-    
+            
+    #Validierungsfehler wenn kein Kunde da ist
     @api.onchange('stage_id')
     def _check_customer(self):
         if not self.partner_id:
@@ -47,3 +56,14 @@ class aej_document(models.Model):
                 'title': 'Warning!',
                 'message': 'Kein Kunde!!!!!!!!!!'}    
             }
+
+
+            
+    
+        
+#Der normale Display name funktioniert nicht --> Muss store = True sein        
+class aej_folder2(models.Model):
+    _inherit = 'documents.folder'
+    display_nameXX = fields.Char(related='display_name' ,string='DisplayNameX', store=True)
+    
+    
