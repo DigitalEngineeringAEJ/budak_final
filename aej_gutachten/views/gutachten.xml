@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="aej_project_task_view" model="ir.ui.view">
+        <field name="name">aej.gutachten.inherit.project</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">  
+
+         <xpath expr="//notebook//page[last()]" position="after">
+                <page name="test" string="Test">
+                    <group>
+                        <group>
+                         <!-- <field name="testfeld"/> -->
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+    </field>
+    </record>
+</odoo>
