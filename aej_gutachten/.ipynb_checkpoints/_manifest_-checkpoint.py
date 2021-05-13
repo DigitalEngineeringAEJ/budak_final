@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {
     "name": "AEJ Gutachten",
     "depends": ["base","documents","mail","contacts","project"],
