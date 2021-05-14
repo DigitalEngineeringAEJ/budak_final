@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="aej_gutachten.list">
+      <field name="name">aej_gutachten list</field>
+      <field name="model">aej_gutachten.aej_gutachten</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="aej_gutachten.action_window">
+      <field name="name">aej_gutachten window</field>
+      <field name="res_model">aej_gutachten.aej_gutachten</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="aej_gutachten.action_server">
+      <field name="name">aej_gutachten server</field>
+      <field name="model_id" ref="model_aej_gutachten_aej_gutachten"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="aej_gutachten" id="aej_gutachten.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="aej_gutachten.menu_1" parent="aej_gutachten.menu_root"/>
+    <menuitem name="Menu 2" id="aej_gutachten.menu_2" parent="aej_gutachten.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="aej_gutachten.menu_1_list" parent="aej_gutachten.menu_1"
+              action="aej_gutachten.action_window"/>
+    <menuitem name="Server to list" id="aej_gutachten" parent="aej_gutachten.menu_2"
+              action="aej_gutachten.action_server"/>
+-->
+  </data>
+</odoo>
