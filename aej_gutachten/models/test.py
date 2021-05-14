@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, 
 from odoo import exceptions
 from odoo.exceptions import UserError
 from datetime import date, datetime, timedelta
