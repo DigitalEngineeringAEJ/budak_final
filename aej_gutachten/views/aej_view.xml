@@ -1,6 +1,6 @@
-<!-- <odoo>
+<odoo>
     <data>
-      <record id="aej_project_task_view" model="ir.ui.view">
+  <!--     <record id="aej_project_task_view" model="ir.ui.view">
         <field name="name">aej.gutachten.inherit.project</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
@@ -17,6 +17,6 @@
             </xpath>
 
     </field>
-    </record>  
+    </record> --> 
     </data>
-</odoo>-->
+</odoo>
