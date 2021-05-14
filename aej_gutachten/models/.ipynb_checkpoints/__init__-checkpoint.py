@@ -1,3 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from . import modelss
+from . import models
+from . import test
