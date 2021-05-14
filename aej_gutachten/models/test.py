@@ -67,6 +67,6 @@
     
         
 #Der normale Display name funktioniert nicht --> Muss store = True sein        
-class aej_folder2(models.Model):
-    _inherit = 'documents.folder'
-    display_nameXX = fields.Char(related='display_name' ,string='DisplayNameX', store=True)
+#class aej_folder2(models.Model):
+#    _inherit = 'documents.folder'
+#    display_nameXX = fields.Char(related='display_name' ,string='DisplayNameX', store=True)
