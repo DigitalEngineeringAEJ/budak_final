@@ -5,19 +5,20 @@ from odoo import exceptions
 from odoo.exceptions import UserError
 from datetime import date, datetime, timedelta
 
+
 class aej_gutachten(models.Model):
      _name = 'aej_gutachten.aej_gutachten'
      _description = 'aej_gutachten.aej_gutachten'
      _inherit = 'project.task'
-#    stage_id = fields.Many2one('project.task.type', 'stageXXX')
-#    currentDay = datetime.now().day
-#    currentMonth = datetime.now().month 
-#    currentYear = datetime.now().year
+    stage_id = fields.Many2one('project.task.type', 'stageXXX')
+    currentDay = datetime.now().day
+    currentMonth = datetime.now().month 
+    currentYear = datetime.now().year
 
     #Suchfunktion für Ordnerstruktur 
-    wortliste = [str(currentYear),str(currentMonth)]
-    trennzeichen = ' / '
-    suchordner = str(trennzeichen.join(wortliste))
+#    wortliste = [str(currentYear),str(currentMonth)]
+#    trennzeichen = ' / '
+#    suchordner = str(trennzeichen.join(wortliste))
     
     #testfeld = fields.Char(string="Testfeld", default="Test", store=False)
     
