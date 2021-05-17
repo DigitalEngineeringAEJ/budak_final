@@ -9,7 +9,7 @@ class aej_gutachten(models.Model):
      _name = 'aej_gutachten.aej_gutachten'
      _description = 'aej_gutachten.aej_gutachten'
      _inherit = 'project.task'
-#    stage_id = fields.Many2one('project.task.type', 'stageXXX')
+    stage_id = fields.Many2one('project.task.type', 'stageXXX')
 #    currentDay = datetime.now().day
 #    currentMonth = datetime.now().month 
 #    currentYear = datetime.now().year
