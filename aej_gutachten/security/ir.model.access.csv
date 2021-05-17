@@ -1,3 +1,21 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_aej_gutachten_aej_gutachten,access_aej_gutachten_aej_gutachten,model_aej_gutachten_aej_gutachten,base.group_user,1,0,0,0
-access_shipment,access_shipment,model_shipment,group_shipment_admin,1,1,1,1
+project.access_project_project_manager,project.project,project.model_project_project,project.group_project_manager,1,0,0,0
+project.access_project_user,project.project on partners,project.model_project_project,base.group_user,1,0,0,0
+project.access_project_portal,project_portal,project.model_project_project,base.group_portal,1,0,0,0
+project.access_project_project,project.project,project.model_project_project,project.group_project_user,1,0,0,0
+project.access_task_on_partner,project.task on partners,project_enterprise.model_project_task,base.group_user,1,0,0,0
+project.access_project_task,project.task,project_enterprise.model_project_task,project.group_project_user,1,0,0,0
+project.access_mail_activity_type_project_manager,mail.activity.type.project.manager,mail.model_mail_activity_type,project.group_project_manager,1,0,0,0
+project.access_account_analytic_line_project,account.analytic.line project,analytic.model_account_analytic_line,project.group_project_manager,1,0,0,0
+project.access_project_delete_wizard,access_project_delete_wizard,project.model_project_delete_wizard,project.group_project_manager,1,0,0,0
+project.access_project_task_type_delete_wizard,project.task.type.delete.wizard,project.model_project_task_type_delete_wizard,project.group_project_manager,1,0,0,0
+project.access_project_tags_manager,project.project_tags_manager,project.model_project_tags,project.group_project_manager,1,0,0,0
+project.access_project_tags_portal,project_tags_portal,project.model_project_tags,base.group_portal,1,0,0,0
+project.access_resource_calendar,project.resource_calendar user,resource.model_resource_calendar,project.group_project_user,1,0,0,0
+project.access_project_task_recurrence,project.task.recurrence,project.model_project_task_recurrence,project.group_project_user,1,0,0,0
+project.access_project_task_type_manager,project.task.type manager,project.model_project_task_type,project.group_project_manager,1,0,0,0
+project.access_project_task_type_user,project.task.type.user,project.model_project_task_type,base.group_user,1,0,0,0
+project.access_project_task_type_project_user,project.task.type.project.user,project.model_project_task_type,project.group_project_user,1,0,0,0
+project.access_report_project_task_user,report.project.task.user,project_enterprise.model_report_project_task_user,project.group_project_manager,1,0,0,0
+project.access_resource_calendar_attendance,project.resource_calendar_attendance user,resource.model_resource_calendar_attendance,project.group_project_user,1,0,0,0
