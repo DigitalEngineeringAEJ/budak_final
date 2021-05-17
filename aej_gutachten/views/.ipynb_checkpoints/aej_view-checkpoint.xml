@@ -10,7 +10,7 @@
                 <page name="test" string="Test">
                     <group>
                         <group>
-                         <!-- <field name="testfeld"/> -->
+                          <field name="testfeld"/> 
                         </group>
                     </group>
                 </page>
