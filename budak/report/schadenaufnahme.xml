@@ -6,20 +6,20 @@
                 <div class="header"/>
                 <div class="footer"/>
                 <t t-call="web.external_layout">
-                    <div class="page">
+                    <div class="page" style="font-size: 17px;line-height: 1.6;">
                         <div class="row">
                             <div class="col-5">
-                                <table style="padding-left:-40px"
-                                       class="table table-sm table-bordered  mt-1 text-center">
-                                    <tr>
-                                        <td style="width:100%; text-align : left">
-                                            <strong>Kunde:</strong>
+                                <table width="100%" style="padding-left:-40px ;"
+                                >
+                                    <tr style="border: 1px solid black;" width="100%">
+                                        <td style="width:100%;text-align : left">
+                                            <strong style="margin-left: 15px;">Kunde:</strong>
                                             <span t-field="o.customer_name"/>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="border: 1px solid black;" width="100%">
                                         <td style="width:100%;text-align : left">
-                                            <strong>Kennzeichen:</strong>
+                                            <strong style="margin-left: 15px;">Kennzeichen:</strong>
                                             <span t-field="o.license_plate"/>
                                         </td>
                                     </tr>
@@ -46,18 +46,20 @@
                             </div>
 
                         </div>
+                        <br/>
                         <div class="row">
-                            <strong>Besichtigungsdatum/Ort/Zeit:</strong>
-                            <span t-field="o.date_off_view"/>
-                            <br/>
-                            <strong style="color: red;">Schadentag/ Ort:</strong>
-                            <span t-field="o.day_offcrash"/>
-                            <br/>
-                            <strong>Schadenhergang:</strong>
-                            <br/>
+                            <div calss="col-12" style=" margin-left: 30px;">
+                                <strong>Besichtigungsdatum/Ort/Zeit:</strong>
+                                <span t-field="o.date_off_view"/>
+                                <br/>
+                                <strong style="color: red;">Schadentag/ Ort:</strong>
+                                <span t-field="o.day_offcrash"/>
+                                <br/>
+                                <strong>Schadenhergang:</strong>
 
+                            </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style=" margin-left: 15px; border-bottom: 1px solid black;">
                             <table class="table  table-sm table-borderless text-center">
                                 <tr>
                                     <td>
@@ -143,6 +145,7 @@
                                             <input type="checkbox"/>
                                             Sonstiges
                                             <span t-field="o.other_text"/>
+
                                         </t>
                                     </td>
                                 </tr>
@@ -150,12 +153,13 @@
 
                             </table>
 
-
                         </div>
-                        <div>
+                        <br/>
+                        <div style=" margin-left: 15px;">
                             <strong style="color: green;">
                                 <u>Auftraggeber</u>
                             </strong>
+                            <br/>
                             <br/>
                             <p>Vorname/ Nachname:
                                 <span t-field="o.client_first_name"/>
@@ -174,7 +178,7 @@
                         </div>
                         <div class="row">
 
-                            <table width="70%" style=" margin-left: 15px;">
+                            <table width="70%" style="margin-left: 30px;">
                                 <tr style="height: 40px;">
                                     <td width="40%">Rechtsanwalt:</td>
                                     <td width="10%">Nein</td>
@@ -202,23 +206,236 @@
 
                             </table>
                         </div>
-                        <br/>
-                        <br/>
 
-                        <div style="border-style: inset;border-color: black;">
-                            <strong style="color: red;">
-                                <u>Versicherungsnehmer</u>
+
+                        <div style="border: 1px solid black;">
+                            <div style="margin-left: 15px;">
+
+                                <strong style="color: red;">
+                                    <u>Versicherungsnehmer</u>
+                                </strong>
+                                <br/>
+                                <br/>
+
+
+                                <p>Amtl.-Kennzeichen:
+                                    <span t-field="o.license_plate"/>
+                                </p>
+                                <p>Vorname/ Nachname:
+                                    <span t-field="o.policy_holder_fam_name"/>
+                                    <span t-field="o.policy_holder_first_name"/>
+                                </p>
+                                <p>PLZ/ Adresse:
+                                    <span t-field="o.policy_holder_post_code"/>
+                                    <span t-field="o.policy_holder_local"/>
+                                </p>
+                                <div class="row">
+                                    <div class="col-2">Versicherung:</div>
+                                    <span t-field="o.policy_name"/>
+                                    <div class="col-3"></div>
+                                    <div class="col-4">Versicherungs-/Schaden Nr.:</div>
+                                    <span t-field="o.policy_number"/>
+                                    <div class="col-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-12" style=" margin-left: 15px;">
+                                <strong>
+                                    <u>Besichtigungszustand</u>
+                                </strong>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-4" style=" margin-left: 15px;">
+                                <span t-field="o.selection_dismantle"/>
+                            </div>
+                            <div class="col-4">
+                                <span t-field="o.selection_driveable"/>
+                            </div>
+                            <div class="col-4">
+                                <span t-field="o.selection_driving_safety"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div style="border: 1px solid black;  font-size: 17px;line-height: 1.6;">
+                        <div style="margin-left: 15px;">
+                            <strong>
+                                <u>Fahrzeugszustand</u>
                             </strong>
                             <br/>
                             <br/>
-                            <p>Amtl.-Kennzeichen:</p>
-                            <p>Vorname/ Nachname:</p>
                             <div class="row">
-                                <div class="col-2">Versicherung:</div>
-                                <div class="col-3"></div>
-                                <div class="col-4">Versicherungs-/Schaden Nr.:</div>
-                                <div class="col-3"></div>
+                                <div class="col-3">
+                                    <u>Allgemein:</u>
+                                    <span style="text-align :right" t-field="o.selection_good"/>
+                                </div>
+
+                                <div class="col-3">
+                                    <span t-field="o.selection_average"/>
+                                </div>
+
+                                <div class="col-2">
+                                    <span t-field="o.sehr_gepflegt"/>
+                                </div>
+                                <div class="col-4">
+                                    <span t-field="o.selection_age_performance"/>
+                                </div>
                             </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-3">
+                                    <u>Karosserie:</u>
+                                    <span style="text-align :right" t-field="o.selection_car_good"/>
+                                </div>
+                                <div class="col-3">
+                                    <span t-field="o.selection_car_average"/>
+                                </div>
+
+                                <div class="col-2">
+                                    <span t-field="o.selection_car_condition"/>
+                                </div>
+                                <div class="col-4">
+                                    <span t-field="o.selection_car_usable_dirty"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+                    <div class="row" style="font-size: 17px;line-height: 1.6;">
+                        <div class="col-2" style=" margin-left: 15px;">
+                            <strong>
+                                <u>Bereifung:</u>
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Dimension
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Index
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Fabrikat
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Reifenart
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Profiltiefe
+                            </strong>
+                        </div>
+
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size: 17px;line-height: 1.6;">
+                        <div class="col-2" style=" margin-left: 15px;">
+                            vorn:
+
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.front_dimension"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <table style="border: 1px solid black;">
+                                <tr>
+                                    <td width="200px">
+                                        <span t-field="o.front_index"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.front_manufacturer"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.front_wheel_type"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <table aligne="center" width="100%">
+                                <tr>
+                                    <td width="45%" aligne="center" style="border: 1px solid black;">
+                                        <span t-field="o.front_tread_depth_left"/>
+                                    </td>
+                                    <td aligne="center" style="border: 0px;" width="10%"></td>
+                                    <td width="45%" aligne="center" style="border: 1px solid black;">
+                                        <span t-field="o.front_tread_depth_right"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row" style="font-size: 17px;line-height: 1.6; padding-top: 5px;">
+                        <div class="col-2" style=" margin-left: 15px;">
+                            hinten:
+                        </div>
+                        <div class="col-2" style="text-align: center">
+
+                            <span t-field="o.back_dimension"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <table style="border: 1px solid black;">
+                                <tr>
+                                    <td width="200px">
+                                        <span t-field="o.back_index"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.back_manufacturer"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.back_wheel_type"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+
+                            <table aligne="center" width="100%">
+                                <tr>
+                                    <td width="45%" aligne="center" style="border: 1px solid black;">
+                                        <span t-field="o.back_tread_depth_left"/>
+                                    </td>
+                                    <td aligne="center" style="border: 0px;" width="10%">
+
+                                    </td>
+                                    <td width="45%" aligne="center" style="border: 1px solid black;">
+                                        <span t-field="o.back_tread_depth_right"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div style="border: 1px solid black;height: 70px;">
+                        <div style="margin-left: 15px;">
+                            <strong style="font-size: 17px;line-height: 1.6;">
+                                <u>Vorschäden:</u>
+                            </strong>
+                            <span t-field="o.pre_damage"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div style="border: 1px solid black;height: 70px;">
+                        <div style="margin-left: 15px;">
+                            <strong style="font-size: 17px;line-height: 1.6;">
+                                <u>unreparierte Schäden:</u>
+                            </strong>
+                            <span t-field="o.unrepaired_damage"/>
+                            <br/>
+                            <strong>(Altschäden)</strong>
                         </div>
                     </div>
                 </t>
@@ -255,5 +472,4 @@
         <field name="groups_id" eval="[(4, ref('base.group_system')),
  (4, ref('base.group_user'))]"/>
     </record>
-
 </odoo>
