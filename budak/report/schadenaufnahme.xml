@@ -1,45 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <template id="report_schadenaufnahme">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
+                <div class="header"/>
+                <div class="footer"/>
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <div class="col-12">
-                            <h4>
-                                Test Schadenaufnahme
-                            </h4>
-                        </div>
-                        <table class="table table-borderless table-sm mt16 ml16">
-                            <tr>
-                                <td style="width:200px;">
-                                    <strong>Customer: </strong>
-                                </td>
+                        <div class="row">
+                            <div class="col-5">
+                                <table style="padding-left:-40px"
+                                       class="table table-sm table-bordered  mt-1 text-center">
+                                    <tr>
+                                        <td style="width:100%; text-align : left">
+                                            <strong>Kunde:</strong>
+                                            <span t-field="o.customer_name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:100%;text-align : left">
+                                            <strong>Kennzeichen:</strong>
+                                            <span t-field="o.license_plate"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-5">
 
-                            </tr>
-                        </table>
-                        
+                                <strong>Vermittler:</strong>
+                                <span t-field="o.agent"/>
+                                <br/>
+
+                                <strong>GA-Nr.:</strong>
+                                <span t-field="o.report_number"/>
+
+                            </div>
+                            <div class="col-2">
+                                <img
+                                        t-att-src="image_data_uri(o.company_id.logo)"
+                                        style="padding: height: 90px; width: 90px;"
+                                        alt="logo"
+                                />
+
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <strong>Besichtigungsdatum/Ort/Zeit:</strong>
+                            <span t-field="o.date_off_view"/>
+                            <br/>
+                            <strong style="color: red;">Schadentag/ Ort:</strong>
+                            <span t-field="o.day_offcrash"/>
+                            <br/>
+                            <strong>Schadenhergang:</strong>
+                            <br/>
+
+                        </div>
+                        <div class="row">
+                            <table class="table  table-sm table-borderless text-center">
+                                <tr>
+                                    <td>
+                                        <t t-if="o.course_park == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.course_park == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.park_out == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.park_out == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.course_change_lane == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.course_change_lane == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.rear_end_collision == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.rear_end_collision == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.vorfahrt == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.vorfahrt == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.ast_park == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.ast_park == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.ast_standing == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.ast_standing == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="align-bottom">Einparken
+                                    </td>
+                                    <td class="align-bottom">Ausparken
+                                    </td>
+                                    <td class="align-bottom">Spurwechsel
+                                    </td>
+                                    <td class="align-bottom">Auffahrunfall
+                                    </td>
+                                    <td class="align-bottom">Vorfahrt missachtet
+                                    </td>
+                                    <td class="align-bottom">AST war geparkt
+                                    </td>
+                                    <td class="align-bottom">AST Stand
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <t t-if="o.others == True">
+                                            <input type="checkbox" checked="True"/>Sonstiges
+                                        </t>
+                                        <t t-else="o.others == False">
+                                            <input type="checkbox"/>
+                                            Sonstiges
+                                            <span t-field="o.other_text"/>
+                                        </t>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+
+
+                        </div>
+                        <div>
+                            <strong style="color: green;">
+                                <u>Auftraggeber</u>
+                            </strong>
+                            <br/>
+                            <p>Vorname/ Nachname:
+                                <span t-field="o.client_first_name"/>
+                                <span t-field="o.client_fam_name"/>
+                            </p>
+                            <p>PLZ/ Adresse:
+                                <span t-field="o.client_post_code"/>
+                                <span t-field="o.client_local"/>
+                            </p>
+                            <p>E-Mail:
+                                <span t-field="o.client_e_mail"/>
+                            </p>
+                            <p>Telefon:
+                                <span t-field="o.client_phone"/>
+                            </p>
+                        </div>
+                        <div class="row">
+
+                            <table width="70%" style=" margin-left: 15px;">
+                                <tr style="height: 40px;">
+                                    <td width="40%">Rechtsanwalt:</td>
+                                    <td width="10%">Nein</td>
+                                    <td width="5%">JA</td>
+                                    <td width="45%">
+                                        <span style="text-align :right" t-field="o.client_name_lawyer"/>
+                                    </td>
+                                </tr>
+                                <tr style="height: 40px;">
+                                    <td>Rechtsschutzversicherung:</td>
+                                    <td>Nein</td>
+                                    <td>JA</td>
+                                    <td>
+                                        <span style="text-align :right" t-field="o.name_insurance"/>
+                                    </td>
+                                </tr>
+                                <tr style="height: 40px;">
+                                    <td>Serviceheft/Scheckheft:</td>
+                                    <td>Nein</td>
+                                    <td>JA</td>
+                                    <td>
+                                        <span style="text-align :right" t-field="o.dekra"/>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <br/>
+                        <br/>
+
+                        <div style="border-style: inset;border-color: black;">
+                            <strong style="color: red;">
+                                <u>Versicherungsnehmer</u>
+                            </strong>
+                            <br/>
+                            <br/>
+                            <p>Amtl.-Kennzeichen:</p>
+                            <p>Vorname/ Nachname:</p>
+                            <div class="row">
+                                <div class="col-2">Versicherung:</div>
+                                <div class="col-3"></div>
+                                <div class="col-4">Versicherungs-/Schaden Nr.:</div>
+                                <div class="col-3"></div>
+                            </div>
+                        </div>
                     </div>
                 </t>
             </t>
         </t>
     </template>
-
-    <report
-        id="schadenaufnahme"
-        model="project.task"
-        string="Schadenaufnahme"
-        report_type="qweb-pdf"
-        name="my_module.report_schadenaufnahme"
-        file="my_module.report_schadenaufnahme"
-        groups="base.group_system,base.group_user"
-        print_report_name="(object.name + '_test_report.pdf')"
-        menu="True"
-        attachment="(object.name + '_test_report.pdf')"
-        attachment_use="True"
-        
-
-    />
+    <record id="paperformat_schadenaufnahme" model="report.paperformat">
+        <field name="name">A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+    <record id="action_report_schadenaufnahme" model="ir.actions.report">
+        <field name="name">Schadenaufnahme</field>
+        <field name="paperformat_id" ref="budak.paperformat_schadenaufnahme"/>
+        <field name="print_report_name">(object.name + '_test_report.pdf')</field>
+        <field name="model">project.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">budak.report_schadenaufnahme</field>
+        <field name="report_file">budak.report_schadenaufnahme</field>
+        <field name="binding_model_id" ref="model_project_task"/>
+        <field name="binding_type">report</field>
+        <field name="attachment_use">True</field>
+        <field name="attachment">(object.name + '_test_report.pdf')</field>
+        <field name="groups_id" eval="[(4, ref('base.group_system')),
+ (4, ref('base.group_user'))]"/>
+    </record>
 
 </odoo>
