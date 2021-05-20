@@ -35,13 +35,13 @@ class ProjectTask(models.Model):
     name_insurance = fields.Char(string="Rechtschutzversicherung")
     client_service_book = fields.Boolean(string="Service- Scheckheft")
     dekra = fields.Selection(
-        selection=[("Dekra", "Dekra"), ("PLZ Fahrzeugschein", "PLZ Fahrzeugschein")], string=" "
+        selection=[("Dekra", "Dekra"), ("PLZ Fahrzeugschein", "PLZ Fahrzeugschein")], string="  "
     )
-    policy_holder_fam_name = fields.Char(string="Nachname")
+    policy_holder_fam_name = fields.Char()
     policy_holder_first_name = fields.Char(string="Vorname")
-    policy_holder_post_code = fields.Char(string="PLZ")
-    policy_holder_local = fields.Char(string="Ort")
-    policy_holder_streat = fields.Char(string="Strasse")
+    policy_holder_post_code = fields.Char()
+    policy_holder_local = fields.Char()
+    policy_holder_streat = fields.Char()
     policy_name = fields.Char(string="Versicherung")
     policy_number = fields.Char(string="Versicherungsnummer")
     selection_dismantle = fields.Selection(
@@ -81,18 +81,14 @@ class ProjectTask(models.Model):
         , string="Alter und Laufl. entsprechend"
     )
     selection_car_good = fields.Selection(
-        selection=[("sehr gut", " sehr gut"), ("gut", "gut")],
-        string="sehr gut/gut"
-    )
+        selection=[("sehr gut", " sehr gut"), ("gut", "gut")])
     selection_car_average = fields.Selection(
         selection=[
             ("überdurchschnittlich", "überdurchschnittlich"),
-            ("durchschnittlich", "durchschnittlich"),
-        ], string="über/durchschnittlich"
-    )
+            ("durchschnittlich", "durchschnittlich")])
     selection_car_condition = fields.Selection(
         selection=[("sehr gepflegt", "sehr gepflegt"), ("gepflegt", "gepflegt")],
-        string="sehr gepflegt/gepflegt"
+
     )
     selection_car_usable_dirty = fields.Selection(
         selection=[
@@ -107,9 +103,9 @@ class ProjectTask(models.Model):
     )
     front_tread_depth_left = fields.Float(string="Profiltiefe left")
     front_tread_depth_right = fields.Float(string="Profiltiefe right")
-    back_dimension = fields.Char(string="Dimension")
-    back_index = fields.Char(string="Index")
-    back_manufacturer = fields.Char(string="Fabrikant")
+    back_dimension = fields.Char()
+    back_index = fields.Char()
+    back_manufacturer = fields.Char()
     back_wheel_type = fields.Selection(
         selection=[("Sommer", "Sommer"), ("Winter", "Winter")]
     )
