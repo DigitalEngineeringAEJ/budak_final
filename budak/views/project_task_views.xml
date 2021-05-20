@@ -48,7 +48,7 @@
                     <group name="customer">
                         <group name="customer_left">
                             <field name="client_fam_name"/>
-                            <field name="client_first_name"/>
+                            <field name="client_first_name" string="Vorname"/>
                             <field name="client_post_code"/>
                             <field name="client_local"/>
                             <field name="client_e_mail"/>
