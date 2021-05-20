@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_aej_gutachten_aej_gutachten,access_aej_gutachten_aej_gutachten,model_aej_gutachten_aej_gutachten,base.group_user,1,1,1,1
+project.access_project_task_recurrence,project.task.recurrence,project.model_project_task_recurrence,project.group_project_user,1,1,1,1
+project.access_project_task_type_delete_wizard,project.task.type.delete.wizard,project.model_project_task_type_delete_wizard,project.group_project_manager,1,1,1,1
