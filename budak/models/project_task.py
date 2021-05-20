@@ -24,7 +24,7 @@ class ProjectTask(models.Model):
     others = fields.Boolean(string="Sonstiges")
     other_text = fields.Text(string=" ")
     client_fam_name = fields.Char(string="Nachname")
-    client_first_name = fields.Char(string="Vorname")
+    client_first_name = fields.Char()
     client_post_code = fields.Char(string="PLZ")
     client_local = fields.Char(string="Ort")
     client_e_mail = fields.Char(string="E-Mail")
