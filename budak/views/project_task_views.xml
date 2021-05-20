@@ -70,11 +70,11 @@
                 <page string="Versicherungsnehmer" name="policyholder">
                     <group name="policyholder">
                         <group name="policyholder_left">
-                            <field name="policy_holder_fam_name"/>
-                            <field name="policy_holder_first_name"/>
-                            <field name="policy_holder_post_code"/>
-                            <field name="policy_holder_local"/>
-                            <field name="policy_holder_streat"/>
+                            <field name="policy_holder_fam_name" string="Nachname"/>
+                            <field name="policy_holder_first_name" string="Vorname"/>
+                            <field name="policy_holder_post_code" string="PLZ"/>
+                            <field name="policy_holder_local" string="Ort"/>
+                            <field name="policy_holder_streat" string="Strasse"/>
                         </group>
                         <group name="policyholder_right">
                             <field name="policy_name"/>
@@ -103,9 +103,9 @@
                             <field name="selection_age_performance"/>
                         </group>
                         <group name="vehicle_condition_right" string="Karosserie">
-                            <field name="selection_car_good"/>
-                            <field name="selection_car_average"/>
-                            <field name="selection_car_condition"/>
+                            <field name="selection_car_good"  string="sehr gut/gut"/>
+                            <field name="selection_car_average" string="über/durchschnittlich"/>
+                            <field name="selection_car_condition"  string="sehr gepflegt/gepflegt"/>
                             <field name="selection_car_usable_dirty"/>
                         </group>
                     </group>
@@ -121,9 +121,9 @@
                             <field name="front_tread_depth_right"/>
                         </group>
                         <group name="set_of_tires_right" string="Hinten">
-                            <field name="back_dimension"/>
-                            <field name="back_index"/>
-                            <field name="back_manufacturer"/>
+                            <field name="back_dimension" string="Dimension"/>
+                            <field name="back_index" string="Index"/>
+                            <field name="back_manufacturer" string="Fabrikant"/>
                             <field name="back_wheel_type"/>
                             <field name="back_tread_depth_left"/>
                             <field name="back_tread_depth_right"/>
