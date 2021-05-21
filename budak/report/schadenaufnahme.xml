@@ -14,7 +14,7 @@
                                     <tr style="border: 1px solid black;" width="100%">
                                         <td style="width:100%;text-align : left">
                                             <strong style="margin-left: 15px;">Kunde:</strong>
-                                            <span t-field="o.customer_name"/>
+                                            <span t-field="o.partner_id"/>
                                         </td>
                                     </tr>
                                     <tr style="border: 1px solid black;" width="100%">
@@ -130,17 +130,31 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <t t-if="o.others == True">
-                                            <input type="checkbox" checked="True"/>Sonstiges
-                                        </t>
-                                        <t t-else="o.others == False">
-                                            <input type="checkbox"/>
-                                            Sonstiges
-                                            <span t-field="o.other_text"/>
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-if="o.others == True">-->
+                                    <!--                                            <input type="checkbox" checked="True"/>Sonstiges-->
+                                    <!--                                        </t>-->
+                                    <!--                                        <t t-else="o.others == False">-->
+                                    <!--                                            <input type="checkbox"/>-->
+                                    <!--                                            Sonstiges-->
+                                    <!--                                            <span t-field="o.other_text"/>-->
+                                    <!--                                        </t>-->
+                                    <!--                                    </td>-->
 
-                                        </t>
-                                    </td>
+
+                                    <t t-if="o.others == True">
+                                        <td>
+                                            <input type="checkbox" checked="True"/>Sonstiges
+                                        </td>
+                                        <td col-span="6">
+                                            <span t-field="o.other_text"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="o.others == False">
+                                        <td>
+                                            <input type="checkbox"/>Sonstiges
+                                        </td>
+                                    </t>
                                 </tr>
                             </table>
                         </div>
@@ -167,30 +181,48 @@
                             </p>
                         </div>
                         <div class="row" style="padding-bottom: 4px">
-                            <table width="70%" style="margin-left: 30px;">
+                            <table width="100%" style="margin-left: 30px;">
                                 <tr style="height: 40px;">
                                     <td width="40%">Rechtsanwalt:</td>
-                                    <td width="10%">Nein</td>
-                                    <td width="5%">JA</td>
-                                    <td width="45%">
-                                        <span style="text-align :right" t-field="o.client_name_lawyer"/>
-                                    </td>
+                                    <t t-if="o.client_lawyer">
+                                        <td width="15%">JA</td>
+                                        <td width="45%">
+                                            <span style="text-align :right" t-field="o.client_name_lawyer"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td width="15%">Nein</td>
+                                        <td width="45%">
+                                        </td>
+                                    </t>
                                 </tr>
                                 <tr style="height: 40px;">
                                     <td>Rechtsschutzversicherung:</td>
-                                    <td>Nein</td>
-                                    <td>JA</td>
-                                    <td>
-                                        <span style="text-align :right" t-field="o.name_insurance"/>
-                                    </td>
+                                    <t t-if="o.client_insurance">
+                                        <td width="15%">JA</td>
+                                        <td width="45%">
+                                            <span style="text-align :right" t-field="o.name_insurance"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td width="15%">Nein</td>
+                                         <td width="45%">
+                                        </td>
+                                    </t>
                                 </tr>
                                 <tr style="height: 40px;">
                                     <td>Serviceheft/Scheckheft:</td>
-                                    <td>Nein</td>
-                                    <td>JA</td>
-                                    <td>
-                                        <span style="text-align :right" t-field="o.dekra"/>
-                                    </td>
+                                    <t t-if="o.client_service_book">
+                                        <td width="15%">JA</td>
+                                         <td width="45%">
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td width="15%">Nein</td>
+                                        <td width="45%">
+                                            <span style="text-align :right" t-field="o.dekra"/>
+                                        </td>
+                                    </t>
                                 </tr>
                             </table>
                         </div>
@@ -447,7 +479,7 @@
     <record id="action_report_schadenaufnahme" model="ir.actions.report">
         <field name="name">Schadenaufnahme</field>
         <field name="paperformat_id" ref="budak.paperformat_schadenaufnahme"/>
-        <field name="print_report_name">(object.name + '_test_report.pdf')</field>
+        <field name="print_report_name">(object.name + '_Schadensaufnahmebericht.pdf')</field>
         <field name="model">project.task</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">budak.report_schadenaufnahme</field>
@@ -455,7 +487,7 @@
         <field name="binding_model_id" ref="model_project_task"/>
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
-        <field name="attachment">(object.name + '_test_report.pdf')</field>
+        <field name="attachment">(object.name + '_Schadensaufnahmebericht.pdf')</field>
         <field name="groups_id" eval="[(4, ref('base.group_system')),
  (4, ref('base.group_user'))]"/>
     </record>
