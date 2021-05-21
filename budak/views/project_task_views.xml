@@ -10,7 +10,6 @@
             <xpath expr="//form[1]//notebook" position="before">
                 <group name="studio_group_3LIKq">
                     <group name="studio_group_3LIKq_left">
-                        <field name="customer_name"/>
                         <field name="license_plate"/>
                         <field name="date_off_view"/>
                         <field name="place_offview" string="Besichtigunsort"/>
@@ -23,7 +22,7 @@
                     </group>
                 </group>
             </xpath>
-            <xpath expr="//form[1]//notebook" position="inside">
+            <xpath expr="//form[1]//notebook/page[@name='description_page']" position="before">
                 <page string="Schadenshergang" name="studio_page_GE5Aq">
                     <group name="studio_group_GE5Aq">
                         <group name="studio_group_GE5Aq_left">
@@ -103,9 +102,9 @@
                             <field name="selection_age_performance"/>
                         </group>
                         <group name="vehicle_condition_right" string="Karosserie">
-                            <field name="selection_car_good"  string="sehr gut/gut"/>
+                            <field name="selection_car_good" string="sehr gut/gut"/>
                             <field name="selection_car_average" string="über/durchschnittlich"/>
-                            <field name="selection_car_condition"  string="sehr gepflegt/gepflegt"/>
+                            <field name="selection_car_condition" string="sehr gepflegt/gepflegt"/>
                             <field name="selection_car_usable_dirty"/>
                         </group>
                     </group>

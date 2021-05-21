@@ -6,7 +6,7 @@ from odoo.exceptions import UserError
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    customer_name = fields.Char(string="Kunde")
+    partner_id = fields.Many2one(string="Kunde")
     license_plate = fields.Char(string="Kennzeichen")
     date_off_view = fields.Datetime(string="Besichtigunsdatum")
     place_offview = fields.Char(string="Besichtigunsort")
@@ -101,16 +101,16 @@ class ProjectTask(models.Model):
     front_wheel_type = fields.Selection(
         selection=[("Sommer", "Sommer"), ("Winter", "Winter")], string="Reifenart"
     )
-    front_tread_depth_left = fields.Float(string="Profiltiefe left")
-    front_tread_depth_right = fields.Float(string="Profiltiefe right")
+    front_tread_depth_left = fields.Float(string="Profiltiefe links")
+    front_tread_depth_right = fields.Float(string="Profiltiefe rechts")
     back_dimension = fields.Char()
     back_index = fields.Char()
     back_manufacturer = fields.Char()
     back_wheel_type = fields.Selection(
         selection=[("Sommer", "Sommer"), ("Winter", "Winter")]
     )
-    back_tread_depth_left = fields.Float(string="Back Tread Depth left")
-    back_tread_depth_right = fields.Float(string="Back Tread Depth right")
+    back_tread_depth_left = fields.Float(string="Back Tread Depth links")
+    back_tread_depth_right = fields.Float(string="Back Tread Depth rechts")
     pre_damage = fields.Text(string="Vorschäden")
     unrepaired_damage = fields.Text(string="Unreparierte Schäden (Altschäden)")
     signature = fields.Binary(string="Unterschrift")
@@ -123,6 +123,7 @@ class ProjectTask(models.Model):
         )
         if (
                 self.name
+                and self.partner_id
                 and self.stage_id
                 and self.stage_id.name != "New"
                 and not attachment_ids
