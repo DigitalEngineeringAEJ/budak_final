@@ -42,7 +42,7 @@
                         </div>
                         <br/>
                         <div class="row">
-                            <div calss="col-12" style=" margin-left: 30px;">
+                            <div calss="col-6" style=" margin-left: 30px;">
                                 <strong>Besichtigungsdatum/Ort/Zeit:</strong>
                                 <span t-field="o.date_off_view"/>
                                 <br/>
@@ -50,6 +50,15 @@
                                 <span t-field="o.day_offcrash"/>
                                 <br/>
                                 <strong>Schadenhergang:</strong>
+
+                            </div>
+                            <div calss="col-6" style=" margin-left: 30px;">
+                                <strong>Besichtigunsort:</strong>
+                                <span t-field="o.place_offview"/>
+                                <br/>
+                                <strong>Schadensort:</strong>
+                                <span t-field="o.place_offcrash"/>
+                                <br/>
 
                             </div>
                         </div>
