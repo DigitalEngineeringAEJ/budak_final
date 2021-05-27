@@ -31,7 +31,7 @@ class ProjectTask(models.Model):
     client_phone = fields.Char(string="Telefon")
     client_lawyer = fields.Boolean(string="Rechtsanwalt")
     client_name_lawyer = fields.Char(string="Name Rechtsanwalt")
-    client_insurance = fields.Boolean(string="Rechtsschutzversicherung")
+    client_insurance = fields.Boolean(string="Rechtchutzversicherung")
     name_insurance = fields.Char(string="Rechtschutzversicherung")
     client_service_book = fields.Boolean(string="Service- Scheckheft")
     dekra = fields.Selection(
@@ -44,8 +44,7 @@ class ProjectTask(models.Model):
     policy_holder_streat = fields.Char()
     policy_name = fields.Char(string="Versicherung")
     policy_number = fields.Char(string="Versicherungsnummer")
-    selection_dismantle = fields.Selection(
-        selection=[("unzerlegt", "unzerlegt"), ("teilzerlegt", "teilzerlegt")]
+    selection_dismantle = fields.Selection(selection=[("unzerlegt", "unzerlegt"), ("teilzerlegt", "teilzerlegt")],string="Auswahl Demontage"
     )
     selection_driveable = fields.Selection(
         selection=[
@@ -55,8 +54,7 @@ class ProjectTask(models.Model):
                 "bedingt fahrfähig bis zur Werkstatt",
                 "bedingt fahrfähig bis zur Werkstatt",
             ),
-        ]
-    )
+        ],string="Auswahl Fahrbar")
     selection_driving_safety = fields.Selection(
         selection=[
             ("verkehrsicher", "verkehrsicher"),
@@ -106,11 +104,9 @@ class ProjectTask(models.Model):
     back_dimension = fields.Char()
     back_index = fields.Char()
     back_manufacturer = fields.Char()
-    back_wheel_type = fields.Selection(
-        selection=[("Sommer", "Sommer"), ("Winter", "Winter")]
-    )
-    back_tread_depth_left = fields.Float(string="Back Tread Depth links")
-    back_tread_depth_right = fields.Float(string="Back Tread Depth rechts")
+    back_wheel_type = fields.Selection(selection=[("Sommer", "Sommer"), ("Winter", "Winter")], string="Reifenart")
+    back_tread_depth_left = fields.Float()
+    back_tread_depth_right = fields.Float()
     pre_damage = fields.Text(string="Vorschäden")
     unrepaired_damage = fields.Text(string="Unreparierte Schäden (Altschäden)")
     signature = fields.Binary(string="Unterschrift")

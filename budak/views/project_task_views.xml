@@ -12,7 +12,8 @@
                     <group name="studio_group_3LIKq_left">
                         <field name="license_plate"/>
                         <field name="date_off_view"/>
-                        <field name="place_offview" string="Besichtigunsort"/>
+                        <field name="place_offview" string="Besichtigungsort"/>
+
                     </group>
                     <group name="studio_group_3LIKq_right">
                         <field name="agent"/>
@@ -124,8 +125,9 @@
                             <field name="back_index" string="Index"/>
                             <field name="back_manufacturer" string="Fabrikant"/>
                             <field name="back_wheel_type"/>
-                            <field name="back_tread_depth_left"/>
-                            <field name="back_tread_depth_right"/>
+                            <field name="back_tread_depth_left" string="Profiltiefe links"/>
+                            <field name="back_tread_depth_right" string="Profiltiefe rechts"/>
+
                         </group>
                     </group>
                 </page>
