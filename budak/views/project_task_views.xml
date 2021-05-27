@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_task_form_inherit_budak" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]//notebook" position="before">
+                <group name="studio_group_3LIKq">
+                    <group name="studio_group_3LIKq_left">
+                        <field name="license_plate"/>
+                        <field name="date_off_view"/>
+                        <field name="place_offview" string="Besichtigungsort"/>
+
+                    </group>
+                    <group name="studio_group_3LIKq_right">
+                        <field name="agent"/>
+                        <field name="report_number"/>
+                        <field name="day_offcrash"/>
+                        <field name="place_offcrash"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//form[1]//notebook/page[@name='description_page']" position="before">
+                <page string="Schadenshergang" name="studio_page_GE5Aq">
+                    <group name="studio_group_GE5Aq">
+                        <group name="studio_group_GE5Aq_left">
+                            <field name="course_park"/>
+                            <field name="park_out"/>
+                            <field name="course_change_lane"/>
+                            <field name="rear_end_collision"/>
+                        </group>
+                        <group name="studio_group_GE5Aq_right">
+                            <field name="vorfahrt"/>
+                            <field name="ast_park"/>
+                            <field name="ast_standing"/>
+                        </group>
+                    </group>
+                    <group name="studio_group_VTe30">
+                        <field name="others"/>
+                        <field name="other_text"
+                               attrs="{&quot;invisible&quot;: [[&quot;others&quot;,&quot;=&quot;,False]], &quot;required&quot;: [[&quot;others&quot;,&quot;=&quot;,True]]}"/>
+                    </group>
+                </page>
+                <page string="Auftragsgeber" name="customer">
+                    <group name="customer">
+                        <group name="customer_left">
+                            <field name="client_fam_name"/>
+                            <field name="client_first_name" string="Vorname"/>
+                            <field name="client_post_code"/>
+                            <field name="client_local"/>
+                            <field name="client_e_mail"/>
+                            <field name="client_phone"/>
+                        </group>
+                        <group name="customer_right">
+                            <field name="client_lawyer"/>
+                            <field name="client_name_lawyer"
+                                   attrs="{&quot;invisible&quot;: [[&quot;client_lawyer&quot;,&quot;=&quot;,False]], &quot;required&quot;: [[&quot;client_lawyer&quot;,&quot;=&quot;,True]]}"/>
+                            <field name="client_insurance"/>
+                            <field name="name_insurance"
+                                   attrs="{&quot;invisible&quot;: [[&quot;client_insurance&quot;,&quot;=&quot;,False]], &quot;required&quot;: [[&quot;client_insurance&quot;,&quot;=&quot;,True]]}"/>
+                            <field name="client_service_book"/>
+                            <field name="dekra"
+                                   attrs="{&quot;invisible&quot;: [[&quot;client_service_book&quot;,&quot;=&quot;,True]], &quot;required&quot;: [[&quot;client_service_book&quot;,&quot;=&quot;,False]]}"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Versicherungsnehmer" name="policyholder">
+                    <group name="policyholder">
+                        <group name="policyholder_left">
+                            <field name="policy_holder_fam_name" string="Nachname"/>
+                            <field name="policy_holder_first_name" string="Vorname"/>
+                            <field name="policy_holder_post_code" string="PLZ"/>
+                            <field name="policy_holder_local" string="Ort"/>
+                            <field name="policy_holder_streat" string="Strasse"/>
+                        </group>
+                        <group name="policyholder_right">
+                            <field name="policy_name"/>
+                            <field name="policy_number"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Besichtigunszustand" name="inspection_condition">
+                    <group name="inspection_condition">
+                        <group name="inspection_condition_left">
+                            <field name="selection_dismantle"/>
+                            <field name="selection_driveable"/>
+                            <field name="selection_driving_safety"/>
+                        </group>
+                        <group name="inspection_condition_right">
+                            <field name="inspection_note"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Fahrzeugzustand" name="vehicle_condition">
+                    <group name="vehicle_condition">
+                        <group name="vehicle_condition_left" string="Allgemein">
+                            <field name="selection_good"/>
+                            <field name="selection_average"/>
+                            <field name="sehr_gepflegt"/>
+                            <field name="selection_age_performance"/>
+                        </group>
+                        <group name="vehicle_condition_right" string="Karosserie">
+                            <field name="selection_car_good" string="sehr gut/gut"/>
+                            <field name="selection_car_average" string="über/durchschnittlich"/>
+                            <field name="selection_car_condition" string="sehr gepflegt/gepflegt"/>
+                            <field name="selection_car_usable_dirty"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Bereifung" name="set_of_tires">
+                    <group name="set_of_tires">
+                        <group name="set_of_tires_left" string="Vorne">
+                            <field name="front_dimension"/>
+                            <field name="front_index"/>
+                            <field name="front_manufacturer"/>
+                            <field name="front_wheel_type"/>
+                            <field name="front_tread_depth_left"/>
+                            <field name="front_tread_depth_right"/>
+                        </group>
+                        <group name="set_of_tires_right" string="Hinten">
+                            <field name="back_dimension" string="Dimension"/>
+                            <field name="back_index" string="Index"/>
+                            <field name="back_manufacturer" string="Fabrikant"/>
+                            <field name="back_wheel_type"/>
+                            <field name="back_tread_depth_left" string="Profiltiefe links"/>
+                            <field name="back_tread_depth_right" string="Profiltiefe rechts"/>
+
+                        </group>
+                    </group>
+                </page>
+                <page string="Vorschäden" name="previous_damage">
+                    <group name="previous_damage">
+                        <group name="previous_damage_left">
+                            <field name="pre_damage"/>
+                        </group>
+                        <group name="previous_damage_right">
+                            <field name="unrepaired_damage"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Unterschrift" name="signature">
+                    <group name="signature">
+                        <group name="signature">
+                            <field widget="signature" name="signature"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

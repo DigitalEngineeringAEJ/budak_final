@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_schadenaufnahme">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="header"/>
+                <div class="footer"/>
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-size: 17px;line-height: 1.2;">
+                        <div class="row">
+                            <div class="col-5">
+                                <table width="100%" style="padding-left:-40px ;"
+                                >
+                                    <tr style="border: 1px solid black;" width="100%">
+                                        <td style="width:100%;text-align : left">
+                                            <strong style="margin-left: 15px;">Kunde:</strong>
+                                            <span t-field="o.partner_id"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="border: 1px solid black;" width="100%">
+                                        <td style="width:100%;text-align : left">
+                                            <strong style="margin-left: 15px;">Kennzeichen:</strong>
+                                            <span t-field="o.license_plate"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-5">
+                                <strong>Vermittler:</strong>
+                                <span t-field="o.agent"/>
+                                <br/>
+                                <strong>GA-Nr.:</strong>
+                                <span t-field="o.report_number"/>
+                            </div>
+                            <div class="col-2">
+                                <img
+                                        t-att-src="image_data_uri(o.company_id.logo)"
+                                        style="padding: height: 90px; width: 90px;"
+                                        alt="logo"
+                                />
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div calss="col-6" style=" margin-left: 30px;">
+
+                                <strong>Besichtigungsdatum/Ort/Zeit:</strong>
+                                <span t-field="o.date_off_view"/>
+                                <br/>
+                                <strong style="color: red;">Schadentag/ Ort:</strong>
+                                <span t-field="o.day_offcrash"/>
+                                <br/>
+                                <strong>Schadenhergang:</strong>
+
+                            </div>
+                            <div calss="col-6" style=" margin-left: 30px;">
+                                <strong>Besichtigungsort:</strong>
+                                <span t-field="o.place_offview"/>
+                                <br/>
+                                <strong>Schadensort:</strong>
+                                <span t-field="o.place_offcrash"/>
+                                <br/>
+
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-left: 15px; border-bottom: 1px solid black;">
+                            <table class="table  table-sm table-borderless text-center">
+                                <tr>
+                                    <td>
+                                        <t t-if="o.course_park == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.course_park == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.park_out == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.park_out == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.course_change_lane == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.course_change_lane == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.rear_end_collision == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.rear_end_collision == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.vorfahrt == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.vorfahrt == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.ast_park == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.ast_park == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.ast_standing == True">
+                                            <input type="checkbox" checked="True"/>
+                                        </t>
+                                        <t t-else="o.ast_standing == False">
+                                            <input type="checkbox"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-bottom">Einparken
+                                    </td>
+                                    <td class="align-bottom">Ausparken
+                                    </td>
+                                    <td class="align-bottom">Spurwechsel
+                                    </td>
+                                    <td class="align-bottom">Auffahrunfall
+                                    </td>
+                                    <td class="align-bottom">Vorfahrt missachtet
+                                    </td>
+                                    <td class="align-bottom">AST war geparkt
+                                    </td>
+                                    <td class="align-bottom">AST Stand
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!--                                    <td>-->
+                                    <!--                                        <t t-if="o.others == True">-->
+                                    <!--                                            <input type="checkbox" checked="True"/>Sonstiges-->
+                                    <!--                                        </t>-->
+                                    <!--                                        <t t-else="o.others == False">-->
+                                    <!--                                            <input type="checkbox"/>-->
+                                    <!--                                            Sonstiges-->
+                                    <!--                                            <span t-field="o.other_text"/>-->
+                                    <!--                                        </t>-->
+                                    <!--                                    </td>-->
+
+
+                                    <t t-if="o.others == True">
+                                        <td>
+                                            <input type="checkbox" checked="True"/>Sonstiges
+                                        </td>
+                                        <td col-span="6">
+                                            <span t-field="o.other_text"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="o.others == False">
+                                        <td>
+                                            <input type="checkbox"/>Sonstiges
+                                        </td>
+                                    </t>
+                                </tr>
+                            </table>
+                        </div>
+                        <br/>
+                        <div style=" margin-left: 15px;">
+                            <p>
+                                <strong style="color: green;">
+                                    <u>Auftraggeber</u>
+                                </strong>
+                            </p>
+                            <p>Vorname/ Nachname:
+                                <span t-field="o.client_first_name"/>
+                                <span t-field="o.client_fam_name"/>
+                            </p>
+                            <p>PLZ/ Adresse:
+                                <span t-field="o.client_post_code"/>
+                                <span t-field="o.client_local"/>
+                            </p>
+                            <p>E-Mail:
+                                <span t-field="o.client_e_mail"/>
+                            </p>
+                            <p>Telefon:
+                                <span t-field="o.client_phone"/>
+                            </p>
+                        </div>
+                        <div class="row" style="padding-bottom: 4px">
+                            <table width="100%" style="margin-left: 30px;">
+                                <tr style="height: 40px;">
+                                    <td width="40%">Rechtsanwalt:</td>
+                                    <t t-if="o.client_lawyer">
+                                        <td width="15%">JA</td>
+                                        <td width="45%">
+                                            <span style="text-align :right" t-field="o.client_name_lawyer"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td width="15%">Nein</td>
+                                        <td width="45%">
+                                        </td>
+                                    </t>
+                                </tr>
+                                <tr style="height: 40px;">
+                                    <td>Rechtsschutzversicherung:</td>
+                                    <t t-if="o.client_insurance">
+                                        <td width="15%">JA</td>
+                                        <td width="45%">
+                                            <span style="text-align :right" t-field="o.name_insurance"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td width="15%">Nein</td>
+                                         <td width="45%">
+                                        </td>
+                                    </t>
+                                </tr>
+                                <tr style="height: 40px;">
+                                    <td>Serviceheft/Scheckheft:</td>
+                                    <t t-if="o.client_service_book">
+                                        <td width="15%">JA</td>
+                                         <td width="45%">
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td width="15%">Nein</td>
+                                        <td width="45%">
+                                            <span style="text-align :right" t-field="o.dekra"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="border: 1px solid black;">
+                            <div style="margin-left: 15px;">
+
+                                <strong style="color: red;">
+                                    <u>Versicherungsnehmer</u>
+                                </strong>
+                                <br/>
+                                <br/>
+                                <p>Amtl.-Kennzeichen:
+                                    <span t-field="o.license_plate"/>
+                                </p>
+                                <p>Vorname/ Nachname:
+                                    <span t-field="o.policy_holder_fam_name"/>
+                                    <span t-field="o.policy_holder_first_name"/>
+                                </p>
+                                <p>PLZ/ Adresse:
+                                    <span t-field="o.policy_holder_post_code"/>
+                                    <span t-field="o.policy_holder_local"/>
+                                </p>
+                                <div class="row">
+                                    <div class="col-2">Versicherung:</div>
+                                    <div class="col-3">
+                                        <span t-field="o.policy_name"/>
+                                    </div>
+                                    <div class="col-4">Versicherungs-/Schaden Nr.:</div>
+                                    <div class="col-3">
+                                        <span t-field="o.policy_number"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-12" style=" margin-left: 15px;">
+                                <strong>
+                                    <u>Besichtigungszustand</u>
+                                </strong>
+                            </div>
+                        </div>
+                        <br/>
+
+                        <div class="row">
+                            <div class="col-4" style=" margin-left: 15px;">
+                                <span t-field="o.selection_dismantle"/>
+                            </div>
+                            <div class="col-4">
+                                <span t-field="o.selection_driveable"/>
+                            </div>
+                            <div class="col-4">
+                                <span t-field="o.selection_driving_safety"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div style="border: 1px solid black;  font-size: 17px;line-height: 1.2;">
+                        <div style="margin-left: 15px;">
+                            <strong>
+                                <u>Fahrzeugszustand</u>
+                            </strong>
+                            <br/>
+                            <br/>
+                            <div class="row">
+                                <div class="col-3">
+                                    <u>Allgemein:</u>
+                                    <span style="text-align :right" t-field="o.selection_good"/>
+                                </div>
+
+                                <div class="col-3">
+                                    <span t-field="o.selection_average"/>
+                                </div>
+
+                                <div class="col-2">
+                                    <span t-field="o.sehr_gepflegt"/>
+                                </div>
+                                <div class="col-4">
+                                    <span t-field="o.selection_age_performance"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row" style="padding-bottom: 4px">
+                                <div class="col-3">
+                                    <u>Karosserie:</u>
+                                    <span style="text-align :right" t-field="o.selection_car_good"/>
+                                </div>
+                                <br/>
+                                <div class="col-3">
+                                    <span t-field="o.selection_car_average"/>
+                                </div>
+
+                                <div class="col-2">
+                                    <span t-field="o.selection_car_condition"/>
+                                </div>
+                                <div class="col-4">
+                                    <span t-field="o.selection_car_usable_dirty"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size: 17px;line-height: 1.2;">
+                        <div class="col-2" style=" margin-left: 15px;">
+                            <strong>
+                                <u>Bereifung:</u>
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Dimension
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Index
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Fabrikat
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Reifenart
+                            </strong>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <strong>
+                                Profiltiefe
+                            </strong>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size: 17px;line-height: 1.2;">
+                        <div class="col-2" style=" margin-left: 15px;">
+                            vorn:
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.front_dimension"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <t t-if="o.front_index">
+                                <table style="border: 1px solid black;">
+                                    <tr>
+                                        <td width="200px">
+                                            <span t-field="o.front_index"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </t>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.front_manufacturer"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.front_wheel_type"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <table aligne="center" width="100%">
+                                <tr>
+                                    <td width="45%" aligne="center" style="border: 1px solid black;">
+                                        <span t-field="o.front_tread_depth_left"/>
+                                    </td>
+                                    <td aligne="center" style="border: 0px;" width="10%"></td>
+                                    <td width="45%" aligne="center" style="border: 1px solid black;">
+                                        <span t-field="o.front_tread_depth_right"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" style="font-size: 17px;line-height: 1.2; padding-top: 5px;">
+                        <div class="col-2" style=" margin-left: 15px;">
+                            hinten:
+                        </div>
+                        <div class="col-2" style="text-align: center">
+
+                            <span t-field="o.back_dimension"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <t t-if="o.back_index">
+                                <table style="border: 1px solid black;">
+                                    <tr>
+                                        <td width="200px">
+                                            <span t-field="o.back_index"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </t>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.back_manufacturer"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <span t-field="o.back_wheel_type"/>
+                        </div>
+                        <div class="col-2" style="text-align: center">
+                            <table aligne="center" width="100%">
+                                <tr>
+                                    <td width="45%" aligne="center" style="border: 1px solid black;">
+                                        <span t-field="o.back_tread_depth_left"/>
+                                    </td>
+                                    <td aligne="center" style="border: 0px;" width="10%">
+
+                                    </td>
+                                    <td width="45%" aligne="center" style="border: 1px solid black;">
+                                        <span t-field="o.back_tread_depth_right"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div style="border: 1px solid black;height: 70px;">
+                        <div style="margin-left: 15px;">
+                            <strong style="font-size: 17px;line-height: 1.2;">
+                                <u>Vorschäden:</u>
+                            </strong>
+                            <span t-field="o.pre_damage"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div style="border: 1px solid black;height: 70px;">
+                        <div style="margin-left: 15px;">
+                            <strong style="font-size: 17px;line-height: 1.2;">
+                                <u>unreparierte Schäden:</u>
+                            </strong>
+                            <span t-field="o.unrepaired_damage"/>
+                            <br/>
+                            <strong>(Altschäden)</strong>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="paperformat_schadenaufnahme" model="report.paperformat">
+        <field name="name">A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+    <record id="action_report_schadenaufnahme" model="ir.actions.report">
+        <field name="name">Schadenaufnahme</field>
+        <field name="paperformat_id" ref="budak.paperformat_schadenaufnahme"/>
+        <field name="print_report_name">(object.name + '_Schadensaufnahmebericht.pdf')</field>
+        <field name="model">project.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">budak.report_schadenaufnahme</field>
+        <field name="report_file">budak.report_schadenaufnahme</field>
+        <field name="binding_model_id" ref="model_project_task"/>
+        <field name="binding_type">report</field>
+        <field name="attachment_use">True</field>
+        <field name="attachment">(object.name + '_Schadensaufnahmebericht.pdf')</field>
+        <field name="groups_id" eval="[(4, ref('base.group_system')),
+ (4, ref('base.group_user'))]"/>
+    </record>
+</odoo>
