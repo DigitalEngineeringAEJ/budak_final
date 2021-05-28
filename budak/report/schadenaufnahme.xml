@@ -137,18 +137,6 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <!--                                    <td>-->
-                                    <!--                                        <t t-if="o.others == True">-->
-                                    <!--                                            <input type="checkbox" checked="True"/>Sonstiges-->
-                                    <!--                                        </t>-->
-                                    <!--                                        <t t-else="o.others == False">-->
-                                    <!--                                            <input type="checkbox"/>-->
-                                    <!--                                            Sonstiges-->
-                                    <!--                                            <span t-field="o.other_text"/>-->
-                                    <!--                                        </t>-->
-                                    <!--                                    </td>-->
-
-
                                     <t t-if="o.others == True">
                                         <td>
                                             <input type="checkbox" checked="True"/>Sonstiges

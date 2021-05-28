@@ -46,8 +46,7 @@ class ProjectTask(models.Model):
     policy_name = fields.Char(string="Versicherung")
     policy_number = fields.Char(string="Versicherungsnummer")
     selection_dismantle = fields.Selection(
-        selection=[("unzerlegt", "unzerlegt"), ("teilzerlegt", "teilzerlegt")], string="Auswahl Demontage"
-    )
+        selection=[("unzerlegt", "unzerlegt"), ("teilzerlegt", "teilzerlegt")], string="Auswahl Demontage")
     selection_driveable = fields.Selection(
         selection=[
             ("fahrbereit", "fahrbereit"),
@@ -56,8 +55,7 @@ class ProjectTask(models.Model):
                 "bedingt fahrfähig bis zur Werkstatt",
                 "bedingt fahrfähig bis zur Werkstatt",
             ),
-        ], string="Auswahl Fahrbar"
-    )
+        ],string="Auswahl Fahrbar")
     selection_driving_safety = fields.Selection(
         selection=[
             ("verkehrsicher", "verkehrsicher"),
@@ -107,9 +105,7 @@ class ProjectTask(models.Model):
     back_dimension = fields.Char()
     back_index = fields.Char()
     back_manufacturer = fields.Char()
-    back_wheel_type = fields.Selection(
-        selection=[("Sommer", "Sommer"), ("Winter", "Winter")], string="Reifenart"
-    )
+    back_wheel_type = fields.Selection(selection=[("Sommer", "Sommer"), ("Winter", "Winter")], string="Reifenart")
     back_tread_depth_left = fields.Float()
     back_tread_depth_right = fields.Float()
     pre_damage = fields.Text(string="Vorschäden")

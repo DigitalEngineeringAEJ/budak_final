@@ -13,6 +13,7 @@
                         <field name="license_plate"/>
                         <field name="date_off_view"/>
                         <field name="place_offview" string="Besichtigungsort"/>
+
                     </group>
                     <group name="studio_group_3LIKq_right">
                         <field name="agent"/>
@@ -126,6 +127,7 @@
                             <field name="back_wheel_type"/>
                             <field name="back_tread_depth_left" string="Profiltiefe links"/>
                             <field name="back_tread_depth_right" string="Profiltiefe rechts"/>
+
                         </group>
                     </group>
                 </page>
