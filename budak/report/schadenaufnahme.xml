@@ -43,15 +43,13 @@
                         <br/>
                         <div class="row">
                             <div calss="col-6" style=" margin-left: 30px;">
-
-                                <strong>Besichtigungsdatum/Ort/Zeit:</strong>
-                                <span t-field="o.date_off_view"/>
+                                <strong>Besichtigungsdatum/Zeit:</strong>
+                                <span t-esc="context_timestamp(o.date_off_view).strftime('%Y-%m-%d %H:%M')"/>
                                 <br/>
-                                <strong style="color: red;">Schadentag/ Ort:</strong>
-                                <span t-field="o.day_offcrash"/>
+                                <strong style="color: red;">Schadentag/ Zeit:</strong>
+                                <span t-esc="context_timestamp(o.day_offcrash).strftime('%Y-%m-%d %H:%M')"/>
                                 <br/>
                                 <strong>Schadenhergang:</strong>
-
                             </div>
                             <div calss="col-6" style=" margin-left: 30px;">
                                 <strong>Besichtigungsort:</strong>
@@ -60,7 +58,6 @@
                                 <strong>Schadensort:</strong>
                                 <span t-field="o.place_offcrash"/>
                                 <br/>
-
                             </div>
                         </div>
                         <div class="row" style=" margin-left: 15px; border-bottom: 1px solid black;">
@@ -140,18 +137,6 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <!--                                    <td>-->
-                                    <!--                                        <t t-if="o.others == True">-->
-                                    <!--                                            <input type="checkbox" checked="True"/>Sonstiges-->
-                                    <!--                                        </t>-->
-                                    <!--                                        <t t-else="o.others == False">-->
-                                    <!--                                            <input type="checkbox"/>-->
-                                    <!--                                            Sonstiges-->
-                                    <!--                                            <span t-field="o.other_text"/>-->
-                                    <!--                                        </t>-->
-                                    <!--                                    </td>-->
-
-
                                     <t t-if="o.others == True">
                                         <td>
                                             <input type="checkbox" checked="True"/>Sonstiges
@@ -216,7 +201,7 @@
                                     </t>
                                     <t t-else="">
                                         <td width="15%">Nein</td>
-                                         <td width="45%">
+                                        <td width="45%">
                                         </td>
                                     </t>
                                 </tr>
@@ -224,7 +209,7 @@
                                     <td>Serviceheft/Scheckheft:</td>
                                     <t t-if="o.client_service_book">
                                         <td width="15%">JA</td>
-                                         <td width="45%">
+                                        <td width="45%">
                                         </td>
                                     </t>
                                     <t t-else="">
@@ -248,8 +233,8 @@
                                     <span t-field="o.license_plate"/>
                                 </p>
                                 <p>Vorname/ Nachname:
-                                    <span t-field="o.policy_holder_fam_name"/>
                                     <span t-field="o.policy_holder_first_name"/>
+                                    <span t-field="o.policy_holder_fam_name"/>
                                 </p>
                                 <p>PLZ/ Adresse:
                                     <span t-field="o.policy_holder_post_code"/>

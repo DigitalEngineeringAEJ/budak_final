@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
@@ -44,8 +45,8 @@ class ProjectTask(models.Model):
     policy_holder_streat = fields.Char()
     policy_name = fields.Char(string="Versicherung")
     policy_number = fields.Char(string="Versicherungsnummer")
-    selection_dismantle = fields.Selection(selection=[("unzerlegt", "unzerlegt"), ("teilzerlegt", "teilzerlegt")],string="Auswahl Demontage"
-    )
+    selection_dismantle = fields.Selection(
+        selection=[("unzerlegt", "unzerlegt"), ("teilzerlegt", "teilzerlegt")], string="Auswahl Demontage")
     selection_driveable = fields.Selection(
         selection=[
             ("fahrbereit", "fahrbereit"),
